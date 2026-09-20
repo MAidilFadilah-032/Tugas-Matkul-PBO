@@ -4,16 +4,16 @@
 Nama: Muhammad Aidil Fadilah<br>
 Nim: 2509116032<br>
 Kelas: Sistem Informasi (A) 2025<br>
-<br>
+<br><br>
 ## 1. Penjelasan Studi Kasus<br>
 --------------------------------
 Studi kasus yang dipilih adalah Sistem Donor Darah, sebuah program sederhana untuk mengelola data pendonor darah, data penerima atau pemohon darah, serta stok darah di sebuah bank darah.
 <br>
 Program ini mencakup tiga hal utama:<br>
-a. Pengelolaan data orang yang terlibat dalam sistem, yaitu Donor, pihak yang menyumbangkan darah dan Penerima, pihak yang membutuhkan darah. Keduanya memiliki data dasar yang sama yaitu nama, umur, golongan darah namun juga punya data khusus masing-masing donor punya riwayat jumlah donor, penerima punya nama rumah sakit tujuan. Karena adanya kesamaan sekaligus perbedaan ini, hubungan keduanya dimodelkan dengan inheritance.<br>
-b. Pengelolaan stok darah per golongan yaitu A, B, AB, O yang bertambah saat ada donor baru dan berkurang saat ada permintaan dari penerima.<br>
-c. Operasi CRUD C(reate, Read, Update, Delete) untuk data donor dan penerima, dijalankan lewat menu interaktif di console.<br>
-<br>
+a. Pengelolaan data orang yang terlibat dalam sistem, yaitu Donor, pihak yang menyumbangkan darah dan Penerima, pihak yang membutuhkan darah. Keduanya memiliki data dasar yang sama yaitu nama, umur, golongan darah namun juga punya data khusus masing-masing donor punya riwayat jumlah donor, penerima punya nama rumah sakit tujuan. Karena adanya kesamaan sekaligus perbedaan ini, hubungan keduanya dimodelkan dengan inheritance.<br><br>
+b. Pengelolaan stok darah per golongan yaitu A, B, AB, O yang bertambah saat ada donor baru dan berkurang saat ada permintaan dari penerima.<br><br>
+c. Operasi CRUD C(reate, Read, Update, Delete) untuk data donor dan penerima, dijalankan lewat menu interaktif di console.<br><br>
+<br><br>
 ## 2. Hierarki Class<br>
 --------------------------------
 <img width="691" height="683" alt="image" src="https://github.com/user-attachments/assets/81e5984e-455b-48fd-9bfe-4fa6d1138fea" />
@@ -21,10 +21,10 @@ c. Operasi CRUD C(reate, Read, Update, Delete) untuk data donor dan penerima, di
 <img width="628" height="615" alt="image" src="https://github.com/user-attachments/assets/85ff88aa-1c00-4c78-a443-d6497e03b9fd" />
 <br>
 Penjelasan hierarki:<br>
-a. Orang adalah superclass atau induk, bersifat abstract karena tidak pernah dibuat objeknya secara langsung, objek yang benar-benar dipakai selalu berupa Donor atau Penerima.<br>
-b. Donor dan Penerima adalah subclass atau anak yang mewarisi seluruh atribut seperti nama, umur, golonganDarah dan method dari Orang, lalu masing-masing menambahkan data spesifiknya sendiri.<br>
-c. BankDarah dan Main bukan bagian dari hierarki inheritance, melainkan class yang menggunakan has-a objek Donor atau Penerima untuk mengelola stok darah dan menjalankan operasi CRUD.<br>
-<br>
+a. Orang adalah superclass atau induk, bersifat abstract karena tidak pernah dibuat objeknya secara langsung, objek yang benar-benar dipakai selalu berupa Donor atau Penerima.<br><br>
+b. Donor dan Penerima adalah subclass atau anak yang mewarisi seluruh atribut seperti nama, umur, golonganDarah dan method dari Orang, lalu masing-masing menambahkan data spesifiknya sendiri.<br><br>
+c. BankDarah dan Main bukan bagian dari hierarki inheritance, melainkan class yang menggunakan has-a objek Donor atau Penerima untuk mengelola stok darah dan menjalankan operasi CRUD.<br><br>
+<br><br>
 
 ## 3. Penjelasan Kode yang Menerapkan Inheritance<br>
 --------------------------------
@@ -70,11 +70,11 @@ public abstract class Orang {
         System.out.println("Golongan Darah: " + golonganDarah);
     }
 }
-<br>
-- Atribut dideklarasikan dengan modifier protected agar bisa diwarisi dan diakses langsung oleh subclass, bukan hanya lewat getter.<br>
+<br><br>
+- Atribut dideklarasikan dengan modifier protected agar bisa diwarisi dan diakses langsung oleh subclass, bukan hanya lewat getter.<br><br>
 - Method tampilkanInfo() berisi logika umum untuk menampilkan data dasar, yang nantinya dipakai ulang oleh semua subclass.<br>
 
-<br>
+<br><br>
 b. Penjelasan kode Subclass Donor.java yang berelasi inheritance dengan extends<br>
 public class Donor extends Orang {
     private int jumlahDonorKe; 
@@ -99,12 +99,12 @@ public class Donor extends Orang {
         System.out.println("Donor ke: " + jumlahDonorKe);
     }
 }
-<br>
-- Kata kunci extends Orang membuat Donor mewarisi seluruh atribut dan method dari Orang.<br>
-- super yaitu nama, umur, golonganDarah memanggil constructor superclass agar data dasar diisi oleh Orang, sehingga Donor tidak perlu menulis ulang logika penyimpanan data tersebut.<br>
+<br><br>
+- Kata kunci extends Orang membuat Donor mewarisi seluruh atribut dan method dari Orang.<br><br>
+- super yaitu nama, umur, golonganDarah memanggil constructor superclass agar data dasar diisi oleh Orang, sehingga Donor tidak perlu menulis ulang logika penyimpanan data tersebut.<br><br>
 - @Override tampilkanInfo() menunjukkan penerapan method overriding: Donor menyediakan tampilan versinya sendiri, tetapi tetap memanggil super.tampilkanInfo() untuk memakai ulang (reuse) logika dari superclass, lalu menambahkan info khusus donor.<br>
 
-<br>
+<br><br>
 c. Penjelasan kode Subclass Penerima.java<br>
 public class Penerima extends Orang {
     private String namaRumahSakit;
@@ -129,11 +129,11 @@ public class Penerima extends Orang {
         System.out.println("Rumah Sakit: " + namaRumahSakit);
     }
 }
-<br>
-- Pola yang sama seperti Donor, extends Orang, memanggil super(...) di constructor, dan meng-override tampilkanInfo() sambil tetap memanggil super.tampilkanInfo().
-- Ini membuktikan satu superclass Orang bisa diwarisi oleh lebih dari satu subclass (Donor dan Penerima), masing-masing dengan spesialisasinya sendiri, inti dari konsep inheritance.
+<br><br>
+- Pola yang sama seperti Donor, extends Orang, memanggil super(...) di constructor, dan meng-override tampilkanInfo() sambil tetap memanggil super.tampilkanInfo().<br><br>
+- Ini membuktikan satu superclass Orang bisa diwarisi oleh lebih dari satu subclass (Donor dan Penerima), masing-masing dengan spesialisasinya sendiri, inti dari konsep inheritance.<br>
 
-<br>
+<br><br>
 ## 4. Tangkapan Layar Program<br>
 --------------------------------<br>
 a. Data Donor<br>
